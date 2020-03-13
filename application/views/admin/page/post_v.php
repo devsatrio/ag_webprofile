@@ -1,74 +1,73 @@
-<script type="text/javascript">
-function hapus(x){
-	var konfirm=confirm("Yakin Ingin Menghapus Ini ?");
-	if(konfirm){
-		var id=x.parent().parent().find('.id').html();
-		$.post('<?= base_url("admin/post/hapus")?>/'+id).done(function(){
-			x.parent().parent().remove()
-		});
-	}
-}
+<section id="main-content">
+    <section class="wrapper">
+        <section class="panel">
+            <header class="panel-heading">
+                Data Post
+            </header>
+            <div class="panel-body">
+                <?php
+                if ($this->session->flashdata('msg')=='h'){ ?>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Data Berhasil Dihapus.
+                </div>
+                <?php }else if($this->session->flashdata('msg')=='i'){ ?>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Data Berhasil Disimpan.
+                </div>
+                <?php }else if($this->session->flashdata('msg')=='e'){ ?>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Data Berhasil Diperbarui.
+                </div>
+                <?php } ?>
+                <a class="btn btn-success" href="<?= base_url("admin/post/tambah")?>">Tambah
+                    Data</a>
+                <div class="adv-table">
+                    <table class="table table-striped" id="example">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Judul</th>
+                                <th>Kategori</th>
+                                <th>Tanggal</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+          					$no=1;
+          					foreach($data as $data){ ?>
+                            <tr>
+                                <td><?= $no++;?></td>
+                                <td><?= $data->judul?></td>
+                                <td><?= $data->nama_kategori?></td>
+                                <td><?= $data->tanggal?></td>
+                                <td class="text-center">
+                                    <?php if ($data->tampil == '1') { ?>
+                                    <span class="badge badge-primary">Tampil di Beranda</span>
+                                    <?php } else { echo ""; } ?>
+                                </td>
+                                <td class="text-center">
+                                    <a href="<?= base_url("admin/post/edit")."/".$data->id_post?>"
+                                        class="btn btn-warning">Edit</a>
+                                    <a href="<?php echo base_url('admin/post/hapus/'.$data->id_post)?>"
+                                        onclick="return confirm('Hapus data ?');"
+                                        class="btn btn-danger">hapus</a>
+                                </td>
+                            </tr>
+                            <?php }?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+    $('#example').dataTable();
+});
 </script>
-      <section id="main-content">
-          <section class="wrapper">
-              <!-- page start-->
-              <section class="panel">
-                  <header class="panel-heading">
-                  	Halaman
-                  </header>
-                  <div class="panel-body" style="min-height:500px;">
-                  <a class="btn btn-success" href="<?= base_url("admin/post/tambah")?>" style="margin-bottom:20px;">Tambah Post</a>
-                  <form action="<?= base_url("admin/post/cari")?>" method="post" class="form-inline">
-                  <div class="form-group">
-                  	<select name="kategori" class="form-control">
-                        <?php
-						foreach($kategori as $kat){?>
-                        <option value="<?= $kat->id_kategori?>"><?= $kat->nama_kategori?></option>
-                        <?php }?>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                  	<button type="submit" class="btn btn-primary" name="cari"><i class=" icon-search"></i> Cari</button>
-                  </div>
-                  </form>
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Kategori</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-          									<?php
-          									$no=1;
-          									foreach($data as $data){?>
-                                    <tr>
-                                    	<td class="id hidden"><?= $data->id_post?></td>
-                                    	<td><?= $no?></td>
-                                        <td><?= $data->judul?></td>
-                                        <td><?= $data->nama_kategori?></td>
-                                        <td><?= $data->tanggal?></td>
-                                        <td>
-
-                                          <?php if ($data->tampil == '1') { ?>
-                                             <span class="badge badge-primary">Tampil di Beranda</span>
-                                           <?php } else { echo ""; } ?>
-                                         </td>
-                                        <td>
-                                        <a href="<?= base_url("admin/post/edit")."/".$data->id_post?>" class="btn btn-warning btn-xs">Edit</a>
-                                        <a href="javascript:void(null)" onclick="hapus($(this))" class="btn btn-danger btn-xs">hapus</a>
-                                        </td>
-                                    </tr>
-                                    <?php $no++;}?>
-                                </tbody>
-                            </table>
-                            <?= $page?>
-                  </div>
-              </section>
-              <!-- page end-->
-          </section>
-      </section>

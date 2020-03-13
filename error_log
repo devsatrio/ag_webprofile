@@ -1,0 +1,4 @@
+[03-Mar-2016 10:07:29 Asia/Jakarta] PHP Fatal error:  Call to undefined method Master::query_nop_2() in /home/xdispendakedirix/public_html/application/controllers/home.php on line 73
+[14-Mar-2016 20:45:38 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/xdispendakedirix/public_html/application/controllers/home.php on line 100
+[14-Mar-2016 20:45:39 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/xdispendakedirix/public_html/application/controllers/home.php on line 100
+[14-Mar-2016 20:46:49 America/Chicago] PHP Fatal error:  Call to undefined function date_created() in /home/xdispendakedirix/public_html/application/controllers/home.php on line 99

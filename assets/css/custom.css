@@ -1,0 +1,60 @@
+.minheight1000{
+	min-height: 600px;
+}
+
+/* Menu */
+.main-menu .navigation > li > a{
+	color:#800080;
+}
+
+/* Logo */
+.main-header .header-lower .logo{
+	background:#800080;
+}
+
+}
+.main-header .header-lower .logo{
+	background:#800080;
+}
+.main-header .header-lower .logo:before{
+	background:#800080;	
+}
+.main-header .header-lower .logo:after{
+	background:#800080;	
+}
+
+.transparent_film::before {
+    background-color: rgba(229, 229, 229, 0.5);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+
+.black_section.transparent_film::before {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.garis-bawah {
+	border-bottom: 7px solid #800080 !important;
+}
+
+.media-photo {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}

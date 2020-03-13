@@ -15,14 +15,15 @@ class Login extends CI_Controller{
 			$sesi	=array(
 				'sesi_id'=>$data->id,
 				'user'=>$data->user,
-				'type'=>$data->type
+				'type'=>$data->type,
+				'nama'=>$data->nama,
+				'telp'=>$data->notelp,
 			);
-			// print_r($sesi); exit();
 			$this->session->set_userdata('login',$sesi);
 			redirect('admin/index'); 
-			// redirect(base_url("admin/index"));
 		}else{
-			redirect(base_url("login"));
+			$this->session->set_flashdata('msg','e');
+			redirect('login');
 		}
 	}
 	function logout(){
